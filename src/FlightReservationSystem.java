@@ -1,7 +1,6 @@
 /*
 Course: CS 2336.001
 Name: Jaswin S. Kohli
-Net ID: jsk140230
 Date:12/13/2015
 Term Project
 Description: The following program simulates a flight reservation system. It allows the user to 
@@ -252,7 +251,7 @@ public class FlightReservationSystem {
         public void display() {
             System.out.printf("%-20s | %-5s  %tB %<te, %<tY ",airlines, from, departureDate);
             departureTime.printTime();
-            System.out.printf("\t-->\t%-5s  %tB %<te, %<tY ", to, arrivalDate);
+            System.out.printf(" \t-->\t%-5s  %tB %<te, %<tY ", to, arrivalDate);
             arrivalTime.printTime();
             System.out.printf("\t$%.2f%n", cost);
         }
