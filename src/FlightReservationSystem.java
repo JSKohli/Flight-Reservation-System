@@ -81,13 +81,13 @@ public class FlightReservationSystem {
      * It provides accessor and mutator methods to access this information.
      * It also contains a class called time. Time is a custom class to make it easier to display/read time
      */
-    public static class Flight {
+    public static class Flight{
         private String to;                      //Arrival airport
         private String from;                    //Departure airport
         private Date departureDate;             
         private Date arrivalDate;
         private char[][] seats;                 //array representing seat planof the plane. '_' signifies vacancy. 'R' signifies reserved
-
+        
         //Accessor methods for flight class
         public String getAirlines() {
             return airlines;
@@ -464,30 +464,55 @@ public class FlightReservationSystem {
          */
         public Person(){
             Scanner cin = new Scanner(System.in);
+            String tempAge;
             System.out.print("FIRST NAME: ");
             firstName = cin.nextLine();
             System.out.print("LAST NAME: ");
             lastName = cin.nextLine();
-            System.out.print("AGE: ");
-            age = cin.nextInt();
-            System.out.print("DATE OF BIRTH(mm-dd-yyyy): ");
-            String tempDateOfBirth = cin.next();
+            while(true) {
+                System.out.print("AGE: ");
+                tempAge = cin.nextLine();
+                try {
+                    age = Integer.parseInt(tempAge);
+                    if(age < 0 || age > 150) {
+                        throw new Exception();
+                    }
+                    break;
+                }
+                catch(Exception e){
+                    System.err.println("ERROR: Invalid Age!");
+                }                
+            }    
             SimpleDateFormat sdt = new SimpleDateFormat("MM-dd-yyyy");
-            try { 
-                this.dateOfBirth= sdt.parse(tempDateOfBirth);               
-            } 
-            catch (ParseException e) { 
-                System.out.println("Unparseable using " + sdt); 
+            while(true) {
+                System.out.print("DATE OF BIRTH(mm-dd-yyyy): ");
+                String tempDateOfBirth = cin.nextLine();
+                try { 
+                    this.dateOfBirth= sdt.parse(tempDateOfBirth);
+                    break;
+                } 
+                catch (ParseException e) { 
+                    System.err.println("ERROR: Invalid Date Format!"); 
+                }
             }
-            String ch = cin.nextLine();
+            //String ch = cin.nextLine();
             System.out.print("ADDRESS: ");
             address = cin.nextLine();
             System.out.print("NATIONALITY: ");
-            nationality = cin.next();
-            System.out.print("CONTACT NUMBER: ");
-            contactNumber = cin.nextLong();
-           
-            
+            nationality = cin.nextLine();
+            while(true) {
+                System.out.print("CONTACT NUMBER: ");
+                String tempContactNumber = cin.nextLine();
+                try {
+                    contactNumber = Long.parseLong(tempContactNumber);
+                    if(tempContactNumber.length() != 10)
+                        throw new Exception();
+                    break;
+                }
+                catch(Exception e){
+                    System.err.println("ERROR: Invalid Contact Number!");
+                }                
+            }           
         }
         
         /**
