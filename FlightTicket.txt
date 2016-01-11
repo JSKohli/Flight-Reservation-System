@@ -5,4 +5,4 @@
 name: KOHLI, JASWIN
 
 from: DFW    on May 20, 2016 at 12:20   hrs   -->    to: BOM    on May 21, 2016 at 2:40    hrs
-SEAT: 1 d
+SEAT: 1 D
