@@ -385,7 +385,7 @@ public class FlightReservationSystem {
                 return true;
             } 
             catch (ParseException e) { 
-                System.out.println("Invalid date format!");
+                System.err.println("ERROR: Invalid Date Format!");
                 return false;
             }
         }
