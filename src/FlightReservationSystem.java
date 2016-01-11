@@ -599,12 +599,22 @@ public class FlightReservationSystem {
             reservedFlight.printSeats();            //prints the seat plan of flight to console. '_' represents vacancy.
                                                     //'R' represents Reserved.
             Scanner cin = new Scanner(System.in);
-            System.out.print("Enter seat number (row-column, ex: 1-D): ");
-            String ch = cin.nextLine();
-            String[] temp = ch.split("-");            
-            rowSeat = Integer.parseInt(temp[0]);
-            rowSeat--;
-            colSeat = temp[1].charAt(0);
+            while(true) {
+                System.out.print("Enter seat number (row-column, ex: 1-D): ");
+                String ch = cin.nextLine();
+                try{
+                    String[] temp = ch.split("-");            
+                    rowSeat = Integer.parseInt(temp[0]);
+                    colSeat = temp[1].charAt(0);
+                    if(rowSeat < 1 || rowSeat > 10 || Character.toLowerCase(colSeat) < 'a' || Character.toLowerCase(colSeat) > 'j')
+                        throw new Exception();
+                    rowSeat--;
+                    break;
+                }
+                catch(Exception e) {
+                    System.err.println("Error: Invalid seat format/number!");
+                }
+            }
             reservedFlight.reserveSeats(rowSeat, colSeat);
             System.out.println("Your Seat has been reserved. Your flight ticket has been generated!");
             generateTicket(reservedFlight);           //calls a function which creates a ticket in the form of a text file
