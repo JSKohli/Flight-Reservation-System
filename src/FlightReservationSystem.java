@@ -587,6 +587,17 @@ public class FlightReservationSystem {
         
     }
     
+    public static String getAirportName(String airport) {
+        switch (airport) {
+            case "DFW": return "DALLAS/FT-WORTH INTL";
+            case "BOM": return "CHHATRAPATI SHIVAJI INTL";
+            case "DEL": return "INDIRA GANDHI INTL";
+            case "FRA": return "FRANKFURT INTL";
+            case "JFK": return "JOHN F. KENNEDY INTL";
+            default: return "";
+        }
+    }
+    
     /**
      * The following class inherits from class person.
      * It has extra attributes such as the seat number in flight.
@@ -644,16 +655,10 @@ public class FlightReservationSystem {
                 tempString = this.lastName.toUpperCase() + ", " + this.firstName.toUpperCase();
                 fout.printf("|%-15s%-65s|%n","NAME:", tempString);
                 fout.printf("|%-15s%-49s%Ta %<td %<Tb %<tY |%n","FLIGHT:", reservedFlight.getAirlines().toUpperCase(), reservedFlight.getDepartureDate());
-                fout.printf("|%-15s%-50s  %td %<Tb %5s |%n","DEPARTURE:", reservedFlight.getFrom().toUpperCase(), reservedFlight.getDepartureDate(), reservedFlight.getDepartureTime());
-                fout.printf("|%-15s%-50s  %td %<Tb %5s |%n","ARRIVAL:", reservedFlight.getTo().toUpperCase(), reservedFlight.getArrivalDate(), reservedFlight.getArrivalTime());
-                fout.printf("|%-15s%-65s|%n"," ", "RESREVATION CONFIRMED, ECONOMY");
-                //fout.println("|\t\t\t\t"+reservedFlight.getAirlines().toUpperCase()+"\t\t\t\t\t|");
-                //fout.println("|\t\t\t\tFLIGHT TICKET\t\t\t\t\t|");
-                //fout.println("|NAME: "+this.lastName.toUpperCase()+", "+this.firstName.toUpperCase()+"\t\t\t\t\t\t\t|\n");
-                //fout.println("|FLIGHT:\t" + reservedFlight.getAirlines().toUpperCase() + "\t\t\t\t");
-                //fout.printf("%nfrom: %-5s  on %tB %<te, %<tY at %-7s hrs   ", reservedFlight.getFrom().toUpperCase(), reservedFlight.getDepartureDate(),reservedFlight.getDepartureTime());
-                //fout.printf("-->    to: %-5s  on %tB %<te, %<tY at %-7s hrs", reservedFlight.getTo().toUpperCase(), reservedFlight.getArrivalDate(),reservedFlight.getArrivalTime());
-                //fout.printf("%nSEAT: %-2d%s",(rowSeat+1),Character.toString(colSeat));
+                fout.printf("|%-15s%-50s  %td %<Tb %5s |%n","DEPARTURE:", getAirportName(reservedFlight.getFrom().toUpperCase()), reservedFlight.getDepartureDate(), reservedFlight.getDepartureTime());
+                fout.printf("|%-15s%-50s  %td %<Tb %5s |%n","ARRIVAL:", getAirportName(reservedFlight.getTo().toUpperCase()), reservedFlight.getArrivalDate(), reservedFlight.getArrivalTime());
+                fout.printf("|%-15s%02d-%s%-60s |%n","SEAT: ", (rowSeat+1), Character.toString(colSeat).toUpperCase(), "");
+                fout.printf("|%-15s%-65s|%n"," ", "RESERVATION CONFIRMED, ECONOMY");
                 fout.println("|                                                                                |");
                 fout.println("----------------------------------------------------------------------------------");
                 
