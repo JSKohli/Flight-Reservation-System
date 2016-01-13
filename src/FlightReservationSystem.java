@@ -629,12 +629,34 @@ public class FlightReservationSystem {
             File ticket = new File("FlightTicket.txt");
             try {
                 PrintWriter fout = new PrintWriter(ticket, "UTF-8");
-                fout.println("\t\t\t"+reservedFlight.getAirlines().toUpperCase());
-                fout.println("\t\t\tFLIGHT TICKET\n\n");
-                fout.printf("name: "+this.lastName.toUpperCase()+", "+this.firstName.toUpperCase()+"%n");
-                fout.printf("%nfrom: %-5s  on %tB %<te, %<tY at %-7s hrs   ", reservedFlight.getFrom().toUpperCase(), reservedFlight.getDepartureDate(),reservedFlight.getDepartureTime());
-                fout.printf("-->    to: %-5s  on %tB %<te, %<tY at %-7s hrs", reservedFlight.getTo().toUpperCase(), reservedFlight.getArrivalDate(),reservedFlight.getArrivalTime());
-                fout.printf("%nSEAT: %-2d%s",(rowSeat+1),Character.toString(colSeat));
+                fout.println("----------------------------------------------------------------------------------");
+                String tempString = reservedFlight.getAirlines().toUpperCase();
+                int fieldWidth1 = 40+tempString.length()/2;
+                int fieldWidth2 = 40-tempString.length()/2;
+                String arg = "|%" + Integer.toString(fieldWidth1) + "s%" + Integer.toString(fieldWidth2) + "s|%n";
+                fout.printf(arg, tempString, "");
+                tempString = "FLIGHT TICKET";
+                fieldWidth1 = 40+tempString.length()/2;
+                fieldWidth2 = 40-tempString.length()/2;
+                arg = "|%" + Integer.toString(fieldWidth1) + "s%" + Integer.toString(fieldWidth2) + "s|%n";
+                fout.printf(arg, tempString, "");
+                fout.println("|                                                                                |");
+                tempString = this.lastName.toUpperCase() + ", " + this.firstName.toUpperCase();
+                fout.printf("|%-15s%-65s|%n","NAME:", tempString);
+                fout.printf("|%-15s%-49s%Ta %<td %<Tb %<tY |%n","FLIGHT:", reservedFlight.getAirlines().toUpperCase(), reservedFlight.getDepartureDate());
+                fout.printf("|%-15s%-50s  %td %<Tb %5s |%n","DEPARTURE:", reservedFlight.getFrom().toUpperCase(), reservedFlight.getDepartureDate(), reservedFlight.getDepartureTime());
+                fout.printf("|%-15s%-50s  %td %<Tb %5s |%n","ARRIVAL:", reservedFlight.getTo().toUpperCase(), reservedFlight.getArrivalDate(), reservedFlight.getArrivalTime());
+                fout.printf("|%-15s%-65s|%n"," ", "RESREVATION CONFIRMED, ECONOMY");
+                //fout.println("|\t\t\t\t"+reservedFlight.getAirlines().toUpperCase()+"\t\t\t\t\t|");
+                //fout.println("|\t\t\t\tFLIGHT TICKET\t\t\t\t\t|");
+                //fout.println("|NAME: "+this.lastName.toUpperCase()+", "+this.firstName.toUpperCase()+"\t\t\t\t\t\t\t|\n");
+                //fout.println("|FLIGHT:\t" + reservedFlight.getAirlines().toUpperCase() + "\t\t\t\t");
+                //fout.printf("%nfrom: %-5s  on %tB %<te, %<tY at %-7s hrs   ", reservedFlight.getFrom().toUpperCase(), reservedFlight.getDepartureDate(),reservedFlight.getDepartureTime());
+                //fout.printf("-->    to: %-5s  on %tB %<te, %<tY at %-7s hrs", reservedFlight.getTo().toUpperCase(), reservedFlight.getArrivalDate(),reservedFlight.getArrivalTime());
+                //fout.printf("%nSEAT: %-2d%s",(rowSeat+1),Character.toString(colSeat));
+                fout.println("|                                                                                |");
+                fout.println("----------------------------------------------------------------------------------");
+                
                 fout.close();
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(FlightReservationSystem.class.getName()).log(Level.SEVERE, null, ex);

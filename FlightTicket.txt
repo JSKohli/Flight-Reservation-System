@@ -1,12 +1,11 @@
-			JETAIRWAYS
-			FLIGHT TICKET
-
-
-name: KOHLI, JASWIN
-
-from: DFW    on May 20, 2016 at 12:20   hrs   -->    to: BOM    on May 21, 2016 at 2:40    hrs
-<<<<<<< HEAD
-SEAT: 1 D
-=======
-SEAT: 1 D
->>>>>>> 1819dd4148433f62d4b41dff93dbb760a3d88c99
+----------------------------------------------------------------------------------
+|                                   JETAIRWAYS                                   |
+|                                 FLIGHT TICKET                                  |
+|                                                                                |
+|NAME:          KOHLI, JASWIN                                                    |
+|FLIGHT:        JETAIRWAYS                                       FRI 20 MAY 2016 |
+|DEPARTURE:     DFW                                                 20 MAY 12:20 |
+|ARRIVAL:       BOM                                                 21 MAY  2:40 |
+|               RESREVATION CONFIRMED, ECONOMY                                   |
+|                                                                                |
+----------------------------------------------------------------------------------
